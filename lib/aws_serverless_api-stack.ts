@@ -20,7 +20,7 @@ export class AwsServerlessApiStack extends cdk.Stack {
     // lambda function to GetAllTodosLambdaHandler
     const getAllTodosLambda = new Function(this, "GetAllTodosLambdaHandler", {
       runtime: Runtime.NODEJS_16_X,
-      code: Code.fromAsset("functions"),
+      code: Code.fromAsset("lambdaFunctions"),
       handler: "get-all-todos.getAllTodosHandler",
       environment: {
         TODO_TABLE_NAME: todoTable.tableName,
@@ -33,7 +33,7 @@ export class AwsServerlessApiStack extends cdk.Stack {
     // lambda to write todo item into db
     const putTodoLambda = new Function(this, "PutTodoLambda", {
       runtime: Runtime.NODEJS_16_X,
-      code: Code.fromAsset("functions"),
+      code: Code.fromAsset("lambdaFunctions"),
       handler: "put-todo.putTodosHandler",
       environment: {
         TODO_TABLE_NAME: todoTable.tableName,
